@@ -98,7 +98,7 @@ export const keycloakUILogin = (conf, callback, scope = 'info') => new Promise((
   const listener = event => onOpenURL(conf, resolve, reject, state, event, retrieveTokens);
   Linking.addEventListener(URL, listener);
 
-  const doLogin = callback || Linking.openURL;
+  const doLogin = callback || (url) => Linking.openURL(url);
   doLogin(url).then(null);
 }));
 
